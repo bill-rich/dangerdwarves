@@ -3,18 +3,17 @@ package dwarf
 import (
 	"fmt"
 
+	"github.com/bill-rich/dangerdwarves/pkg/common"
 	"github.com/bill-rich/dangerdwarves/pkg/task"
 	"github.com/bill-rich/dangerdwarves/pkg/world"
 )
 
 type Dwarf struct {
-	Name  string
-	Age   int
-	X     int
-	Y     int
-	Z     int
-	Map   *world.LocalMap
-	Tasks []task.Task
+	Name       string
+	Age        int
+	Coordinate common.Coordinate
+	Map        *world.LocalMap
+	Tasks      []task.Task
 }
 
 func (dwarf *Dwarf) ProcessTurn() {
@@ -30,10 +29,8 @@ func (dwarf *Dwarf) ProcessNextTask() {
 	step := dwarf.Tasks[0].Steps[0]
 	switch step.StepType {
 	case task.TaskWalk:
-		dwarf.X = step.X
-		dwarf.Y = step.Y
-		dwarf.Z = step.Z
-		fmt.Printf("%s moved to %d, %d, %d\n", dwarf.Name, dwarf.X, dwarf.Y, dwarf.Z)
+		dwarf.Coordinate = step.Coordinate
+		fmt.Printf("%s moved to %#v\n", dwarf.Name, dwarf.Coordinate)
 	}
 	dwarf.Tasks[0].Steps = dwarf.Tasks[0].Steps[1:]
 }

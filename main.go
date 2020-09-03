@@ -3,6 +3,7 @@ package main
 import (
 	"time"
 
+	"github.com/bill-rich/dangerdwarves/pkg/common"
 	"github.com/bill-rich/dangerdwarves/pkg/dwarf"
 	"github.com/bill-rich/dangerdwarves/pkg/task"
 	"github.com/bill-rich/dangerdwarves/pkg/world"
@@ -14,21 +15,27 @@ func main() {
 	steps := []task.Step{}
 	steps = append(steps, task.Step{
 		StepType: 0,
-		X:        4,
-		Y:        4,
-		Z:        4,
+		Coordinate: common.Coordinate{
+			X: 4,
+			Y: 4,
+			Z: 4,
+		},
 	})
 	steps = append(steps, task.Step{
 		StepType: 0,
-		X:        4,
-		Y:        5,
-		Z:        4,
+		Coordinate: common.Coordinate{
+			X: 4,
+			Y: 5,
+			Z: 4,
+		},
 	})
 	steps = append(steps, task.Step{
 		StepType: 0,
-		X:        4,
-		Y:        6,
-		Z:        4,
+		Coordinate: common.Coordinate{
+			X: 4,
+			Y: 6,
+			Z: 4,
+		},
 	})
 
 	moveTask := task.Task{
@@ -36,11 +43,13 @@ func main() {
 		Steps:    steps,
 	}
 	unit := dwarf.Dwarf{
-		Name:  "Roger",
-		Age:   100,
-		X:     4,
-		Y:     4,
-		Z:     4,
+		Name: "Roger",
+		Age:  100,
+		Coordinate: common.Coordinate{
+			X: 4,
+			Y: 4,
+			Z: 4,
+		},
 		Map:   &localMap,
 		Tasks: []task.Task{moveTask},
 	}

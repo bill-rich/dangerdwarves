@@ -1,5 +1,7 @@
 package task
 
+import "github.com/bill-rich/dangerdwarves/pkg/common"
+
 const (
 	TaskWalk = iota
 )
@@ -14,8 +16,6 @@ type Task struct {
 }
 
 type Step struct {
-	StepType int
-	X        int
-	Y        int
-	Z        int
+	StepType   int
+	Coordinate common.Coordinate
 }
